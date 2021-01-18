@@ -20,24 +20,34 @@
 
 <gazebo reference="base_link">
   <material>Gazebo/Gray</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <!--
   <selfCollide>true</selfCollide>
   <gravity>true</gravity>
+  -->
 </gazebo>
 
-<gazebo reference="left_wheel_2">
+<gazebo reference="left_wheel">
   <material>Gazebo/Black</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>2.5</mu1>
+  <mu2>2.5</mu2>
+  <kp value="50000" />
+  <kd value="10" />
+  <!--
   <selfCollide>true</selfCollide>
+  -->
 </gazebo>
 
-<gazebo reference="right_wheel_1">
+<gazebo reference="right_wheel">
   <material>Gazebo/Black</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
+  <mu1>2.5</mu1>
+  <mu2>2.5</mu2>
+  <kp value="50000" />
+  <kd value="10" />
+  <!--
   <selfCollide>true</selfCollide>
+  -->
 </gazebo>
 
 </robot>

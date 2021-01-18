@@ -1,6 +1,6 @@
 <launch>
 
-<rosparam file="$(find balance_robot_description)/launch/controller.yaml" command="load"/>
+<rosparam file="$(find balance_robot_description)/config/controller.yaml" command="load"/>
 <node args="left_wheel_joint_position_controller right_wheel_joint_position_controller joint_state_controller " name="controller_spawner" ns="balance_robot" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
 <node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
   <remap from="/joint_states" to="/balance_robot/joint_states"/>

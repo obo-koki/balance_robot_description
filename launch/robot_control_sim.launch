@@ -3,6 +3,7 @@
     <arg name="model" default="$(find balance_robot_description)/urdf/balance_robot.xacro" />
     <param name="robot_description" command="$(find xacro)/xacro $(arg model) --inorder" />
 
+    <!--<rosparam file="$(find balance_robot_description)/config/gazebo_ros_control.yaml" command="load" />-->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
