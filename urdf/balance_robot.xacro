@@ -29,6 +29,8 @@
   </collision>
 </link>
 
+<link name="imu_link"/>
+
 <link name="left_wheel">
   <inertial>
     <origin rpy="0 0 0" xyz="5.232905343968532e-16 0.013499725279272082 -6.175615574477433e-16"/>
@@ -75,6 +77,12 @@
   <parent link = "base_link"/>
   <child link = "body_link"/>
   <origin rpy="0 0 0" xyz="0 0 0"/>
+</joint>
+
+<joint name="imu_joint" type="fixed">
+  <parent link = "base_link"/>
+  <child link = "imu_link"/>
+  <origin rpy="0 0 0" xyz="0 0 0.150"/>
 </joint>
 
 <joint name="left_wheel_joint" type="continuous">
