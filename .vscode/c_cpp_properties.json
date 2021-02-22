@@ -1,34 +1,39 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/home/koki/catkin_ws/devel/include/**",
-        "/opt/ros/kinetic/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/amcl/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/base_local_planner/include/**",
-        "/home/koki/catkin_ws/src/bobble_controllers/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/carrot_planner/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/clear_costmap_recovery/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/costmap_2d/include/**",
-        "/home/koki/catkin_ws/src/diff_drive_controller/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/dwa_local_planner/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/global_planner/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/map_server/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/move_base/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/move_slow_and_clear/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/nav_core/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/navfn/include/**",
-        "/home/koki/catkin_ws/src/obstacle_detector/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/robot_pose_ekf/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/rotate_recovery/include/**",
-        "/home/koki/catkin_ws/src/navigation-kinetic-devel/voxel_grid/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS"
-    }
-  ]
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/koki/catkin_ws/devel/include/**",
+                "/opt/ros/kinetic/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/amcl/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/base_local_planner/include/**",
+                "/home/koki/catkin_ws/src/bobble_controllers/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/carrot_planner/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/clear_costmap_recovery/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/costmap_2d/include/**",
+                "/home/koki/catkin_ws/src/diff_drive_controller/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/dwa_local_planner/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/global_planner/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/map_server/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/move_base/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/move_slow_and_clear/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/nav_core/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/navfn/include/**",
+                "/home/koki/catkin_ws/src/obstacle_detector/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/robot_pose_ekf/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/rotate_recovery/include/**",
+                "/home/koki/catkin_ws/src/navigation-kinetic-devel/voxel_grid/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14"
+        }
+    ],
+    "version": 4
 }
