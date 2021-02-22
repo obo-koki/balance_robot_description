@@ -5,6 +5,7 @@
 # Usage
 
 １，balance_robotdescription/script/robot_param.yaml にロボットのパラメータを保存
+
 ２，フィードバックゲインを算出するスクリプトを実行
 ```
 $ cd balance_robot_description/script
@@ -17,5 +18,5 @@ roslaunch balance_robot_description robot_control_sim.launch
 
 # Reference
 
-実機のプログラム
+実機用プログラム
 https://github.com/obo-koki/balance_robot_control.git
