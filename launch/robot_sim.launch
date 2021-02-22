@@ -20,11 +20,6 @@
         respawn="false" type="spawner" args="diff_drive_controller"/>
     <!--Not required in diff_drive_controller 
         <rosparam file="$(find balance_robot_description)/config/gazebo_ros_control.yaml" command="load" />-->
-    
-    <!--Start Robot Position Controller  -->
-    <node pkg="balance_robot_control" type="balance_robot_control" name="balance_robot_control" 
-        output="screen">
-    </node>
 
     <!--Publish joint state(gazebo info), robot state(tf) -->
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
