@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <chrono>
 #include <std_msgs/Float32MultiArray.h>
+#include <std_msgs/Float32.h>
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Pose.h>
 #include <sensor_msgs/Imu.h>
@@ -10,6 +11,8 @@
 #include <control_msgs/JointTrajectoryControllerState.h>
 #include <iostream>
 #include <mutex>
+#include <dynamic_reconfigure/server.h>
+#include <balance_robot_description/gainConfig.h>
 //#include "imu.h"
 
 class BalanceRobotControl{
@@ -26,6 +29,9 @@ class BalanceRobotControl{
 
         ros::Publisher torque_pub_;
 
+        ros::Publisher state_pub_;
+        ros::Publisher show_torque_pub_;
+
         ros::Subscriber imu_sub_;
         void imu_callback(const sensor_msgs::Imu::ConstPtr&);
 
@@ -37,6 +43,15 @@ class BalanceRobotControl{
 
         ros::WallTimer process_timer_;
         void timer_callback(const ros::WallTimerEvent&);
+
+        //Dynamic param
+        dynamic_reconfigure::Server<balance_robot_description::gainConfig> param_server_;
+        dynamic_reconfigure::Server<balance_robot_description::gainConfig>::CallbackType callback_;
+        void param_callback(const balance_robot_description::gainConfig& config, uint32_t level);
+        double gain_theta_;
+        double gain_omega_;
+        double gain_fai_;
+        double gain_error_;
 
         //Other
         void vel_control();

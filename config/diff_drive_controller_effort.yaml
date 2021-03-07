@@ -18,7 +18,7 @@ diff_drive_controller_effort:
 
   # limits
   has_torque_limits    : true
-  max_torque           :  1.2 # Nm
+  max_torque           :  1.47 # Nm
     
   #has_acceleration_limits: true
   #max_acceleration       :  1.5 # m/s^2
