@@ -15,9 +15,10 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model balance_robot"/>
 
     <!--Start Robot Controller -> diff drive controller -->
-    <rosparam command="load" file="$(find balance_robot_description)/config/balance_robot_control.yaml"/> 
+    <rosparam command="load" file="$(find balance_robot_description)/config/diff_drive_controller_effort.yaml"  ns="/balance_robot"/>
+    <rosparam command="load" file="$(find balance_robot_description)/config/joint_state_controller.yaml"  ns="/balance_robot"/>
     <node name="controller_spawner" ns="/balance_robot" output="screen" pkg="controller_manager" 
-        respawn="false" type="spawner" args="joint_state_controller left_wheel_joint_controller right_wheel_joint_controller"/>
+        respawn="false" type="spawner" args="diff_drive_controller_effort joint_state_controller"/>
     <!--Not required in diff_drive_controller 
         <rosparam file="$(find balance_robot_description)/config/gazebo_ros_control.yaml" command="load" />-->
     
@@ -29,8 +30,10 @@
     </node>
 
     <!--Publish joint state(gazebo info), robot state(tf) -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>-->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <remap from="joint_states" to="balance_robot/joint_states" />
+    </node>
 
     <!--Start rviz-->
     <arg default="$(find balance_robot_description)/launch/urdf.rviz" name="rvizconfig"/>

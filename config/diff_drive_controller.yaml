@@ -33,3 +33,9 @@ diff_drive_controller:
       has_acceleration_limits: true
       max_acceleration       :  1.0  # rad/s^2
       min_acceleration       : -1.0 # rad/s^2
+
+balance_robot_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50

@@ -8,13 +8,16 @@ BalanceRobotControl::BalanceRobotControl(ros::NodeHandle nh, ros::NodeHandle pnh
     
     imu_sub_ = nh.subscribe("/imu/data", 10, &BalanceRobotControl::imu_callback, this);
     vel_sub_ = nh.subscribe("/target_cmd_vel", 10, &BalanceRobotControl::vel_callback, this);
-    vel_sub_feedback_ = nh.subscribe("/balance_robot/diff_drive_controller/cmd_vel_out", 10, 
-        &BalanceRobotControl::vel_feedback_callback, this);
+    wheel_sub_ = nh.subscribe("/balance_robot/diff_drive_controller_effort/wheel_joint_controller_state", 10, 
+        &BalanceRobotControl::wheel_callback, this);
     //process_timer_ = nh.createWallTimer(ros::WallDuration(0.001),&BalanceRobotControl::timer_callback,this);
-    vel_pub_ = nh.advertise<geometry_msgs::Twist>("balance_robot/diff_drive_controller/cmd_vel",5);
+    torque_pub_ = nh.advertise<std_msgs::Float32MultiArray>("balance_robot/diff_drive_controller_effort/cmd_torque",5);
 
-    pnh.getParam("control_gain", control_gain);
-    pnh.getParam("wheel_radius", wheel_radius);
+    pnh.getParam("control_gain", control_gain_);
+    pnh.getParam("wheel_radius", wheel_radius_);
+    pnh.getParam("torque_const", torque_const_);
+    pnh.getParam("motor_resist", motor_resist_);
+
 
     //Timer callback debug
     pre_time = ros::WallTime::now();
@@ -40,10 +43,9 @@ void BalanceRobotControl::vel_callback(const geometry_msgs::Twist::ConstPtr &vel
     target_angular_z = vel->angular.z;
 }
 
-void BalanceRobotControl::vel_feedback_callback(const geometry_msgs::TwistStamped::ConstPtr &vel){
-    //get robot current velocity
-    linear_x = vel->twist.linear.x;
-    wheel_angle_vel = linear_x / wheel_radius - robot_pitch_vel;
+void BalanceRobotControl::wheel_callback(const control_msgs::JointTrajectoryControllerState::ConstPtr &state){
+    //get robot current wheel velocity
+    wheel_angle_vel = (state->actual.velocities[0] + state->actual.velocities[1])/2;
 }
 
 void BalanceRobotControl::timer_callback(const ros::WallTimerEvent &e){
@@ -51,29 +53,36 @@ void BalanceRobotControl::timer_callback(const ros::WallTimerEvent &e){
 }
 
 void BalanceRobotControl::vel_control(){
-    geometry_msgs::Twist vel;
-    diff = diff + target_linear_x - linear_x * 1.0/10.0;
+    std_msgs::Float32MultiArray torque_cmd;
+    float volt;
+    torque_cmd.data.resize(2);
+    //diff = diff + target_linear_x - linear_x * 1.0/10.0;
     
     ROS_INFO("robot_pitch:%lf, robot_pitch_vel:%lf, wheel_angle_vel:%lf, diff:%lf", 
                 robot_pitch, robot_pitch_vel, wheel_angle_vel, diff);
-    vel.linear.x = control_gain.at(0) * (robot_pitch) 
-                  +control_gain.at(1) * (robot_pitch_vel)
-                  +control_gain.at(2) * (wheel_angle_vel)
-                  -control_gain.at(3) * diff * 1.0/10.0;
+    volt = control_gain_.at(0) * (robot_pitch) 
+            +control_gain_.at(1) * (robot_pitch_vel)
+            +control_gain_.at(2) * (wheel_angle_vel);
+        //  -control_gain.at(3) * diff * 1.0/10.0;
     
+    torque_cmd.data[0] = volt * torque_const_ / motor_resist_;
+    torque_cmd.data[1] = volt * torque_const_ / motor_resist_;
+
+    /*
     robot_pitch_pre = robot_pitch;
     robot_pitch_vel_pre = robot_pitch_vel;
     wheel_angle_vel_pre = wheel_angle_vel;
 
     vel.angular.z = target_angular_z;
+    */
 
-    ROS_INFO("Publish vx:%lf, az:%lf", vel.linear.x, vel.angular.z);
-    vel_pub_.publish(vel);
+    ROS_INFO("Publish torque_right:%lf, torque_left:%lf", torque_cmd.data[0], torque_cmd.data[1]);
+    torque_pub_.publish(torque_cmd);
     }
 
 void BalanceRobotControl::vel_stop(){
     geometry_msgs::Twist vel;
-    vel_pub_.publish(vel);
+    torque_pub_.publish(vel);
 }
 
 void BalanceRobotControl::main_loop(){
