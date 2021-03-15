@@ -122,7 +122,7 @@ void BalanceRobotControl::vel_stop(){
 
 void BalanceRobotControl::main_loop(){
     //Motor start
-    ros::Rate rate(10);
+    ros::Rate rate(100);
     while (ros::ok()){
         vel_control();
         ros::spinOnce();
