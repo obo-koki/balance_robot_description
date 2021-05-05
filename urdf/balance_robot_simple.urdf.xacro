@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<robot name="balance_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find balance_robot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find balance_robot_description)/urdf/balance_robot.trans" />
+<xacro:include filename="$(find balance_robot_description)/urdf/balance_robot.gazebo" />
+
+<xacro:property name="PI" value="3.14159"/>
+
+<link name="base_link"/>
+
+<link name="body_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <mass value="0.926999"/>
+    <inertia ixx="1.149e-2" ixy="1.99915e-06" ixz="-1.001e-06" iyy="1.023e-02" iyz="-6.657e-05" izz="1.820e-03"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://balance_robot_description/meshes/base_link_simple_body_origin.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://balance_robot_description/meshes/base_link_simple_body_origin.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="imu_link"/>
+
+<link name="left_wheel">
+  <inertial>
+    <origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0"/>
+    <mass value="0.048361"/>
+    <inertia ixx="2.305e-05" ixy="0.0" ixz="0.0" iyy="2.615e-05" iyz="-0.0" izz="2.305e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://balance_robot_description/meshes/wheel_tire_simple_origin.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://balance_robot_description/meshes/wheel_tire_simple_origin.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel">
+  <inertial>
+    <origin rpy="0 0 ${PI}" xyz="0.0 0.081 0.0"/>
+    <mass value="0.048361"/>
+    <inertia ixx="2.305e-05" ixy="0.0" ixz="0.0" iyy="2.615e-05" iyz="-0.0" izz="2.305e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://balance_robot_description/meshes/wheel_tire_simple_origin.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://balance_robot_description/meshes/wheel_tire_simple_origin.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="base_joint" type="fixed">
+  <parent link = "base_link"/>
+  <child link = "body_link"/>
+  <origin rpy="0 0 0" xyz="0 0 0"/>
+</joint>
+
+<joint name="imu_joint" type="fixed">
+  <parent link = "base_link"/>
+  <child link = "imu_link"/>
+  <origin rpy="0 0 0" xyz="0 0 0.145"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit velocity="10.47" effort="1.5"/> <!-- vel->rad/s effort->N*m -->
+  <dynamics damping="0.1"/>
+</joint>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.081 0.0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit velocity="10.47" effort="1.5"/> <!-- vel->rad/s effort->N*m -->
+  <dynamics damping="0.1"/>
+</joint>
+
+</robot>
