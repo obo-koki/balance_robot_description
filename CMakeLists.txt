@@ -10,6 +10,12 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   nav_msgs
   tf
+  control_msgs
+  dynamic_reconfigure
+)
+
+generate_dynamic_reconfigure_options(
+  cfg/gain.cfg
 )
 
 catkin_package(
@@ -21,9 +27,10 @@ include_directories(
 
 add_executable(balance_robot_control 
   src/control_main.cpp
-  src/balance_robot_control.hpp
   src/balance_robot_control.cpp
 )
+
+add_dependencies(balance_robot_control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_link_libraries(balance_robot_control
   ${catkin_LIBRARIES}

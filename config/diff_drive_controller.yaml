@@ -9,6 +9,7 @@ diff_drive_controller:
   wheel_radius : 0.065
   pose_covariance_diagonal : [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
   twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+  publish_cmd : True
 
   # tf
   #enable_odom_tf: true
@@ -32,3 +33,9 @@ diff_drive_controller:
       has_acceleration_limits: true
       max_acceleration       :  1.0  # rad/s^2
       min_acceleration       : -1.0 # rad/s^2
+
+balance_robot_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
