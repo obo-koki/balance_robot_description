@@ -3,10 +3,7 @@
     <!--Start Gazebo-->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="false"/>
-        <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="true"/>
-        <arg name="headless" value="false"/>
-        <arg name="debug" value="false"/>
     </include>
 
     <!--Spawn Robot-->
@@ -16,12 +13,14 @@
 
     <!--Publish joint state(gazebo info), robot state(tf) -->
     <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>-->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
         <remap from="joint_states" to="balance_robot/joint_states" />
-    </node>
+    </node-->
 
     <!--Start rviz-->
+    <!--
     <arg default="$(find balance_robot_description)/launch/urdf.rviz" name="rvizconfig"/>
     <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
+    -->
 
 </launch>

@@ -20,7 +20,8 @@ BalanceRobotControl::BalanceRobotControl(ros::NodeHandle nh, ros::NodeHandle pnh
     pnh.getParam("torque_const", torque_const_);
     pnh.getParam("motor_resist", motor_resist_);
 
-    //Dynamic param
+    //Dynamic para
+
     callback_ = boost::bind(&BalanceRobotControl::param_callback, this, _1, _2);
     param_server_.setCallback(callback_);
     gain_theta_ = control_gain_.at(0);
@@ -98,7 +99,9 @@ void BalanceRobotControl::vel_control(){
     //        -gain_error_ * diff * 1.0/10.0;
     
     torque.data = volt * torque_const_ / motor_resist_;
+    //left wheel
     torque_cmd.data[0] = volt * torque_const_ / motor_resist_;
+    //right wheel
     torque_cmd.data[1] = volt * torque_const_ / motor_resist_;
 
     show_torque_pub_.publish(torque);

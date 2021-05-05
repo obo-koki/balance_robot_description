@@ -27,7 +27,6 @@ include_directories(
 
 add_executable(balance_robot_control 
   src/control_main.cpp
-  src/balance_robot_control.hpp
   src/balance_robot_control.cpp
 )
 
