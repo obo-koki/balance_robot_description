@@ -4,20 +4,22 @@
 <transmission name="left_wheel_joint_trans" type="SimpleTransmission">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="left_wheel_joint">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
   <actuator name="left_wheel_motor">
-    <mechanicalReduction>1</mechanicalReduction>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>90</mechanicalReduction>
   </actuator>
 </transmission>
 
 <transmission name="right_wheel_joint_trans" type="SimpleTransmission">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="right_wheel_joint">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
   <actuator name="right_wheel_motor">
-    <mechanicalReduction>1</mechanicalReduction>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>90</mechanicalReduction>
   </actuator>
 </transmission>
 

@@ -5,7 +5,8 @@
   <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
     <robotNamespace>/balance_robot</robotNamespace>
     <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-    <legacyModeNS>true</legacyModeNS>
+    <legacyModeNS>false</legacyModeNS>
+    <controlPeriod>0.002</controlPeriod>
   </plugin>
 </gazebo>
 
@@ -31,13 +32,13 @@
   <gravity>true</gravity>
   <sensor name="imu_sensor" type="imu">
     <always_on>true</always_on>
-    <update_rate>100</update_rate>
+    <update_rate>200</update_rate>
     <visualize>true</visualize>
     <topic>data</topic>
     <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-      <topicName>imu/data</topicName>
+      <topicName>imu_bosch/data_raw</topicName>
       <bodyName>imu_link</bodyName>
-      <updateRateHZ>10.0</updateRateHZ>
+      <updateRateHZ>200.0</updateRateHZ>
       <gaussianNoise>0.0</gaussianNoise>
       <xyzOffset>0 0 0</xyzOffset>
       <rpyOffset>0 0 0</rpyOffset>
