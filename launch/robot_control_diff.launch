@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-     <!-- Load joint controller configurations from YAML file to parameter server -->
-     <rosparam file="$(find balance_robot_description)/config/controller_diff_drive_control.yaml" command="load"/>
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find balance_robot_description)/config/controller_diff_drive_control.yaml" command="load"/>
 
     <!-- load the controllers -->
     <node name="controller_spawner" pkg="controller_manager"
@@ -13,9 +13,5 @@
     <!-- convert joint states--> 
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
-
-    <!--display rviz-->
-    <arg default="$(find balance_robot_description)/launch/urdf.rviz" name="rvizconfig"/>
-    <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
 
 </launch>
