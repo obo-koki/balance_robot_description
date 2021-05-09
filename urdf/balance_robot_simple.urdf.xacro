@@ -35,6 +35,16 @@
 
 <link name="imu_link"/>
 
+<joint name="left_wheel_joint" type="continuous">
+  <parent link="body_link"/>
+  <child link="left_wheel"/>
+  <!--<origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0"/>-->
+  <origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit velocity="10.47" effort="1.5"/> <!-- vel->rad/s effort->N*m -->
+  <dynamics damping="0.1"/>
+</joint>
+
 <link name="left_wheel">
   <inertial>
     <origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0"/>
@@ -58,7 +68,6 @@
   </collision>
 </link>
 
-<!--
 <link name="right_wheel">
   <inertial>
     <origin rpy="0 0 ${PI}" xyz="0.0 0.081 0.0"/>
@@ -79,7 +88,6 @@
     </geometry>
   </collision>
 </link>
--->
 
 <joint name="base_joint" type="fixed">
   <parent link = "base_link"/>
@@ -94,17 +102,6 @@
   <origin rpy="0 0 0" xyz="0 0 0.145"/>
 </joint>
 
-<joint name="left_wheel_joint" type="continuous">
-  <!--<origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0"/>-->
-  <origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0"/>
-  <parent link="body_link"/>
-  <child link="left_wheel"/>
-  <axis xyz="0.0 1.0 0.0"/>
-  <limit velocity="10.47" effort="1.5"/> <!-- vel->rad/s effort->N*m -->
-  <dynamics damping="0.1"/>
-</joint>
-
-<!--
 <joint name="right_wheel_joint" type="continuous">
   <origin rpy="0 0 0" xyz="0.0 0.081 0.0"/>
   <parent link="body_link"/>
@@ -113,6 +110,5 @@
   <limit velocity="10.47" effort="1.5"/> 
   <dynamics damping="0.1"/>
 </joint>
--->
 
 </robot>
