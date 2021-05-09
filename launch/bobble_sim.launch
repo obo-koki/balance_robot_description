@@ -7,20 +7,21 @@
     </include>
 
     <!--Spawn Robot-->
-    <arg name="model" default="$(find balance_robot_description)/urdf/balance_robot.xacro" />
+    <!--arg name="model" default="$(find balance_robot_description)/urdf/balance_robot.xacro" /-->
+    <arg name="model" default="$(find balance_robot_description)/urdf/balance_robot_simple.urdf.xacro"/>
     <param name="robot_description" command="$(find xacro)/xacro $(arg model) --inorder" />
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model balance_robot"/>
 
     <!--Publish joint state(gazebo info), robot state(tf) -->
-    <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>-->
-    <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
-        <remap from="joint_states" to="balance_robot/joint_states" />
-    </node-->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <!--<remap from="joint_states" to="balance_robot/joint_states" />-->
+    </node>
 
     <!--Start rviz-->
-    <!--
+    
     <arg default="$(find balance_robot_description)/launch/urdf.rviz" name="rvizconfig"/>
     <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
-    -->
+    
 
 </launch>
