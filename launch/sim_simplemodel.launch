@@ -24,11 +24,18 @@
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
   		args="-urdf -model balance_robot_simple -param robot_description"/>
-
+  
+  <!-- convert joint states--> 
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+     <!--<remap from="joint_states" to="balance_robot/joint_states" />-->
+    </node>
+  
   <!--display rviz-->
   <arg default="$(find balance_robot_description)/launch/urdf.rviz" name="rvizconfig"/>
   <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
 
+   
   <!-- ros_control motoman launch file -->
   <!-- <include file="$(find balance_robot_description)/launch/robot_control_diff.launch"/> -->
 </launch>
