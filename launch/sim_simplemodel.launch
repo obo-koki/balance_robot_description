@@ -23,13 +23,12 @@
   
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false"
-  		args="-urdf -model balance_robot_simple -param robot_description"/>
+  		args="-urdf -model balance_robot -param robot_description"/>
   
   <!-- convert joint states--> 
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" >
      <!--<remap from="joint_states" to="balance_robot/joint_states" />-->
-     <param name="publish_frequency" type="double" value="50.0" />
     <param name="tf_prefix" value=""/>
     </node>
   

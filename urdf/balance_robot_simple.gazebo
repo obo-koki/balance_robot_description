@@ -19,6 +19,8 @@
   </plugin>
 </gazebo>
 
+<gazebo reference="base_footprint">
+</gazebo>
 
 <gazebo reference="base_link">
   <material>Gazebo/Gray</material>
@@ -52,24 +54,24 @@
 
 <gazebo reference="left_wheel">
   <material>Gazebo/Black</material>
-  <mu1>2.5</mu1>
-  <mu2>2.5</mu2>
-  <kp value="50000" />
-  <kd value="10" />
-  <!--
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <minDepth>0.000001</minDepth><!--0.001-->
+  <maxVel>0.0001</maxVel><!--1.0-->
+  <kp>1e+12</kp><!--1000000.0-->
+  <kd>1.0</kd><!--100-->
   <selfCollide>true</selfCollide>
-  -->
 </gazebo>
 
 <gazebo reference="right_wheel">
   <material>Gazebo/Black</material>
-  <mu1>2.5</mu1>
-  <mu2>2.5</mu2>
-  <kp value="50000" />
-  <kd value="10" />
-  <!--
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <minDepth>0.000001</minDepth><!--0.001-->
+  <maxVel>0.0001</maxVel><!--1.0-->
+  <kp>1e+12</kp><!--1000000.0-->
+  <kd>1.0</kd><!--100-->
   <selfCollide>true</selfCollide>
-  -->
 </gazebo>
 
 </robot>
