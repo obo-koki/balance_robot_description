@@ -52,7 +52,8 @@
   <child link="left_wheel"/>
   <origin rpy="0 0 ${PI}" xyz="0.0 -0.081 0.0325"/>
   <axis xyz="0.0 1.0 0.0"/>
-  <limit velocity="10.47" effort="1.5"/> <!-- vel->rad/s effort->N*m -->
+  <limit velocity="11.5" effort="1.5"/> <!-- vel->rad/s effort->N*m -->
+  <!--dynamics friction="0.1" />-->
 </joint>
 
 <link name="left_wheel">
@@ -83,7 +84,8 @@
   <child link="right_wheel"/>
   <origin rpy="0 0 0" xyz="0.0 0.081 0.0325"/>
   <axis xyz="0.0 1.0 0.0"/>
-  <limit velocity="10.47" effort="1.5"/> 
+  <limit velocity="11.5" effort="1.5"/> 
+  <!--<dynamics friction="0.1" />-->
 </joint>
 
 <link name="right_wheel">

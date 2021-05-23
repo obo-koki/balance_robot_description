@@ -52,8 +52,8 @@
 
 <gazebo reference="left_wheel">
   <material>Gazebo/Black</material>
-  <mu1>2.5</mu1>
-  <mu2>2.5</mu2>
+  <mu1>0.8</mu1>
+  <mu2>0.8</mu2>
   <kp value="50000" />
   <kd value="10" />
   <!--
@@ -63,8 +63,8 @@
 
 <gazebo reference="right_wheel">
   <material>Gazebo/Black</material>
-  <mu1>2.5</mu1>
-  <mu2>2.5</mu2>
+  <mu1>0.8</mu1>
+  <mu2>0.8</mu2>
   <kp value="50000" />
   <kd value="10" />
   <!--

@@ -1,13 +1,13 @@
 #robot param
 body_mass: 0.8
 body_to_wheel_dist: 0.10
-body_inertia: 0.008
+body_inertia: 0.0057
 body_vis_fric: 0.1
 
 #wheel param
 wheel_mass: 0.05
-wheel_radius: 0.0065
-wheel_inertia: 0.00010625
+wheel_radius: 0.00325
+wheel_inertia: 0.00325
 wheel_vis_fric: 0.1
 
 #motor param

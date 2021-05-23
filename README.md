@@ -25,7 +25,7 @@ $ python get_control_gain.py
 #### 自作プログラム 
 gazebo + rviz
 ```
-roslaunch balance_robot_description sim.launch
+roslaunch balance_robot_description sim_simple.launch
 ```
 rvizのみ   
 ```
