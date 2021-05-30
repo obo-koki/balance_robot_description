@@ -47,6 +47,17 @@ roslaunch balance_robot_description control.launch
 roslaunch balance_robot_description bobble_control.launch
 ```
 
+### ５. ロボットの傾きと速度の測定
+#### シミュレーションのスタートと記録 (gazeboとcontrollerは立ち上げておく)
+```
+roscd bobble_controllers/analysis
+rosrun bobble_controllers BalanceRobotStateHold
+```
+#### グラフ化
+```
+python make_plots.py --run BalanceData.bag
+```
+![Screenshot from 2021-05-30 22-37-58](https://user-images.githubusercontent.com/60743930/120106413-cf797c80-c197-11eb-92cf-b1c5c023a00e.png)
 ## Reference
 
 実機用プログラム

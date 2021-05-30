@@ -27,22 +27,22 @@ balance_robot:
     WheelRadiusMeters: 0.05
     VelocityCmdScale: 1.15
     TurnCmdScale: 6.25
-    VelocityControlKp: 0.125
-    VelocityControlKd: 0.05
-    VelocityControlDerivFilter: 20.0
-    VelocityControlKi: 0.01
+    VelocityControlKp: 0.0 #0.125
+    VelocityControlKd: 0.0 #0.05
+    VelocityControlDerivFilter: 0.0 #20.0
+    VelocityControlKi: 0.0 #0.01
     VelocityControlAlphaFilter: 0.99
     VelocityControlMaxIntegralOutput: 0.025
     VelocityControlOutputLimitDegrees: 8.5
-    TiltControlKp: 29
-    TiltControlKd: 0.6
-    TiltControlAlphaFilter: 0.05
+    TiltControlKp: 1 #29
+    TiltControlKd: 0.0 #0.6
+    TiltControlAlphaFilter: 0.0 #0.05
     TiltOffset: 0.0
     TiltDotOffset: 0.0
     RollDotOffset: 0.0
     YawDotOffset: 0.0
-    TurningControlKp: 0.25
-    TurningControlKi: 0.05
+    TurningControlKp: 0.0 #0.25
+    TurningControlKi: 0.0 #0.05
     TurningControlKd: 0.0
-    TurningControlDerivFilter: 50.0
+    TurningControlDerivFilter: 0.0 #50.0
     TurningOutputFilter: 0.5
