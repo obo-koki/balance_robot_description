@@ -1,5 +1,5 @@
 <launch>
-	<rosparam file="$(find bobble_controllers)/config/balance_robot_control.yaml"
+	<rosparam file="$(find balance_robot_description)/config/bobble_robot_control.yaml"
 		command="load"/>
 
 	<node name="controller_spawner" pkg="controller_manager" type="spawner"
