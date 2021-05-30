@@ -43,7 +43,7 @@
       <topicName>imu_bosch/data_raw</topicName>
       <bodyName>imu_link</bodyName>
       <updateRateHZ>200.0</updateRateHZ>
-      <gaussianNoise>0.0</gaussianNoise>
+      <gaussianNoise>0.02</gaussianNoise>
       <xyzOffset>0 0 0</xyzOffset>
       <rpyOffset>0 0 0</rpyOffset>
       <frameName>imu_link</frameName>
